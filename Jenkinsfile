@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-def VAULT_BIN = "/usr/local/bin/vault"
+def VAULT_BIN = "/vault"
 
 node() {
   timestamps {
