@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-
+def VAULT_BIN = "/usr/local/bin/vault"
 
 node() {
   timestamps {
@@ -14,10 +14,16 @@ node() {
        environment {
         VAULT_ADDR = 'http://35.175.113.232:8200/'
         VAULT_TOKEN    = 's.D5MasWJ9m50TIBUxSMBe2nSF'
+         sh 'printenv'
     }
-      sh 'printenv'
-      sh "vault write -field=wrapping_token -wrap-ttl=200s -f auth/pipeline/role/pipeline-approle/secret-id"
-     
+      
+     stage ('Create Wrapped Secret ID') {
+      def WRAPPED_SID = ""
+      env.WRAPPED_SID = sh(
+        returnStdout: true,
+        script: "${VAULT_BIN} write -field=wrapping_token -wrap-ttl=200s -f auth/pipeline/role/pipeline-approle/secret-id"
+      )
+    }
       
     }
     stage ("Get Role ID for the pipeline AppRole") {
