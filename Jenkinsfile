@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-
+sh "whoami"
 node() {
   timestamps {
     stage ('Create Wrapped Secret ID') {
