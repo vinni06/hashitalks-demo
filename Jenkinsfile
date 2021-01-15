@@ -6,6 +6,10 @@ node() {
     stage ('whoami') {
          sh "whoami"
     }
+     stage ('export') {
+         sh "export VAULT_ADDR='http://35.175.113.232:8200/'"
+         sh "export VAULT_TOKEN='s.D5MasWJ9m50TIBUxSMBe2nSF'"
+    }
     stage ('Create Wrapped Secret ID') {
       def WRAPPED_SID = ""
       env.WRAPPED_SID = sh(
