@@ -7,8 +7,9 @@ node() {
          sh "whoami"
     }
      stage("Env Variables") {
-           sh "echo export VAULT_ADDR='http://35.175.113.232:8200/'"
-           sh "echo export VAULT_TOKEN='s.D5MasWJ9m50TIBUxSMBe2nSF'"
+           def VAULT_ADDR="http://35.175.113.232:8200"
+           def VAULT_TOKEN="s.D5MasWJ9m50TIBUxSMBe2nSF"
+       echo ${VAULT_ADDR}
         } 
     stage ('Create Wrapped Secret ID') {
       def WRAPPED_SID = ""
