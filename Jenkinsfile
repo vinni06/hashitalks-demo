@@ -3,12 +3,16 @@
 
 node() {
   timestamps {
+    stage ('whoami') {
+         sh "whoami"
+      )
     stage ('Create Wrapped Secret ID') {
       def WRAPPED_SID = ""
       env.WRAPPED_SID = sh(
         returnStdout: true,
         script: "vault write -field=wrapping_token -wrap-ttl=200s -f auth/pipeline/role/pipeline-approle/secret-id"
       )
+      
     }
     stage ("Get Role ID for the pipeline AppRole") {
       def ROLE_ID = ""
