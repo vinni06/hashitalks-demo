@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-
+echo whoami
 
 node() {
   timestamps {
