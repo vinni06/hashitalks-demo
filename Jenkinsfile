@@ -6,21 +6,10 @@ node() {
     stage ('whoami') {
          sh "whoami"
     }
-     stage("Env Variables") {
-           def VAULT_ADDR=""
-           env.VAULT_ADDR=sh(
-              returnStdout: true,
-              script: "export VAULT_ADDR='http://35.175.113.232:8200/'"
-             )
-        } 
-    stage("TOKEN") {
-           def VAULT_TOKEN=""
-           env.VAULT_TOKEN=sh(
-              returnStdout: true,
-              script: "export VAULT_TOKEN='s.D5MasWJ9m50TIBUxSMBe2nSF'"
-             )
-        } 
+    
     stage ('Create Wrapped Secret ID') {
+      sh "export VAULT_ADDR='http://35.175.113.232:8200/'"
+      sh "export VAULT_TOKEN='s.D5MasWJ9m50TIBUxSMBe2nSF'"
       def WRAPPED_SID = ""
       env.WRAPPED_SID = sh(
         returnStdout: true,
