@@ -12,6 +12,7 @@ node() {
     }
     
     stage ('Create Wrapped Secret ID') {
+      sh 'printenv'
       sh "vault write -field=wrapping_token -wrap-ttl=200s -f auth/pipeline/role/pipeline-approle/secret-id"
      
       
