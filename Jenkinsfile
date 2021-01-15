@@ -10,11 +10,8 @@ node() {
     stage ('Create Wrapped Secret ID') {
       sh "export VAULT_ADDR='http://35.175.113.232:8200/'"
       sh "export VAULT_TOKEN='s.D5MasWJ9m50TIBUxSMBe2nSF'"
-      def WRAPPED_SID = ""
-      env.WRAPPED_SID = sh(
-        returnStdout: true,
-        script: "vault write -field=wrapping_token -wrap-ttl=200s -f auth/pipeline/role/pipeline-approle/secret-id"
-      )
+      sh "vault write -field=wrapping_token -wrap-ttl=200s -f auth/pipeline/role/pipeline-approle/secret-id"
+     
       
     }
     stage ("Get Role ID for the pipeline AppRole") {
