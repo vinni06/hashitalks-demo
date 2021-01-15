@@ -9,6 +9,8 @@ node() {
     }
     stage ('whoami') {
          sh "whoami"
+         sh "hostname -i"
+         sh "hostname"
     }
     
     stage ('Create Wrapped Secret ID') {
