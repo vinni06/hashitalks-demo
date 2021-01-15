@@ -5,7 +5,7 @@ node() {
   timestamps {
     stage ('whoami') {
          sh "whoami"
-      )
+    }
     stage ('Create Wrapped Secret ID') {
       def WRAPPED_SID = ""
       env.WRAPPED_SID = sh(
