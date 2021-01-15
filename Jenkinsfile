@@ -3,10 +3,7 @@
 
 node() {
   timestamps {
-     environment {
-        VAULT_ADDR = 'http://35.175.113.232:8200/'
-        VAULT_TOKEN    = 's.D5MasWJ9m50TIBUxSMBe2nSF'
-    }
+    
     stage ('whoami') {
          sh "whoami"
          sh "hostname -i"
@@ -14,6 +11,10 @@ node() {
     }
     
     stage ('Create Wrapped Secret ID') {
+       environment {
+        VAULT_ADDR = 'http://35.175.113.232:8200/'
+        VAULT_TOKEN    = 's.D5MasWJ9m50TIBUxSMBe2nSF'
+    }
       sh 'printenv'
       sh "vault write -field=wrapping_token -wrap-ttl=200s -f auth/pipeline/role/pipeline-approle/secret-id"
      
