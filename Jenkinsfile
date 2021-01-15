@@ -10,7 +10,7 @@ node() {
       def WRAPPED_SID = ""
       env.WRAPPED_SID = sh(
         returnStdout: true,
-        script: "vault write -field=wrapping_token -wrap-ttl=200s -f auth/pipeline/role/pipeline-approle/secret-id"
+        sh "vault write -field=wrapping_token -wrap-ttl=200s -f auth/pipeline/role/pipeline-approle/secret-id"
       )
       
     }
