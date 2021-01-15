@@ -8,10 +8,10 @@ node() {
     }
      stage("Env Variables") {
            def VAULT_ADDR=""
-           def VAULT_TOKEN="s.D5MasWJ9m50TIBUxSMBe2nSF"
            env.VAULT_ADDR=sh(
               returnStdout: true,
-              script: "export VAULT_ADDR="http://35.175.113.232:8080/""
+              script: "export VAULT_ADDR='http://35.175.113.232:8080/'"
+             )
         } 
     stage ('Create Wrapped Secret ID') {
       def WRAPPED_SID = ""
