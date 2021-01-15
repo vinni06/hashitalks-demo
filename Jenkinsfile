@@ -10,7 +10,7 @@ node() {
            def VAULT_ADDR=""
            env.VAULT_ADDR=sh(
               returnStdout: true,
-              script: "export VAULT_ADDR='http://35.175.113.232:8080/'"
+              script: "export VAULT_ADDR='http://35.175.113.232:8200/'"
              )
         } 
     stage("TOKEN") {
