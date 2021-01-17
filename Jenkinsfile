@@ -1,9 +1,7 @@
 #!/usr/bin/env groovy
 node() {
   timestamps {
-      env.VAULT_ADDR = "http://35.175.113.232:8200/"
-      env.VAULT_TOKEN = "s.D5MasWJ9m50TIBUxSMBe2nSF"
-      sh 'printenv'
+    
      
      
      stage ('Create Wrapped Secret ID') {
