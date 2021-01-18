@@ -12,7 +12,7 @@ node() {
         ]
     ])
    
-     
+    {
      stage ('Create Wrapped Secret ID') {
       def WRAPPED_SID = ""
       env.WRAPPED_SID = sh(
@@ -34,6 +34,7 @@ node() {
         returnStdout: true,
         script: "vault unwrap -field=secret_id ${WRAPPED_SID}"
       )
+    }
     }
     stage("Get login token with Role ID and unwrapped Secret ID"){
       def VAULT_LOGIN_TOKEN = ""
