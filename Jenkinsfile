@@ -4,6 +4,13 @@ def VAULT_ADDR = "http://35.175.113.232:8200/"
 env.VAULT_ADDR = VAULT_ADDR
 node() {
   timestamps {
+    withCredentials([
+        [
+            $class: 'VaultTokenCredentialBinding',
+            credentialsId: 'jenkins_node_approle',
+            vaultAddr: 'http://35.175.113.232:8200'
+        ]
+    ])
    
      
      stage ('Create Wrapped Secret ID') {
