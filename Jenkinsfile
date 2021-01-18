@@ -1,4 +1,7 @@
 #!/usr/bin/env groovy
+def ROLE_ID = "e3de3101-fc7c-d275-cb56-f48a1c346980"
+def VAULT_ADDR = "http://35.175.113.232:8200/"
+env.VAULT_ADDR = VAULT_ADDR
 node() {
   timestamps {
    
@@ -11,13 +14,13 @@ node() {
       )
     }
     
-    stage ("Get Role ID for the pipeline AppRole") {
-      def ROLE_ID = ""
-      env.ROLE_ID = sh(
-        returnStdout: true,
-        script: "vault read -field=role_id auth/pipeline/role/pipeline-approle/role-id"
-      )
-    }
+    //stage ("Get Role ID for the pipeline AppRole") {
+      //def ROLE_ID = ""
+      //env.ROLE_ID = sh(
+        //returnStdout: true,
+        //script: "vault read -field=role_id auth/pipeline/role/pipeline-approle/role-id"
+      //)
+    //}
     stage("Unwrap Secret ID"){
       def UNWRAPPED_SID = ""
       env.UNWRAPPED_SID = sh(
