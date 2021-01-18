@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 def ROLE_ID = "e3de3101-fc7c-d275-cb56-f48a1c346980"
-def VAULT_ADDR = "http://35.175.113.232:8200/"
+def VAULT_ADDR = "http://3.236.217.65:8200/"
 env.VAULT_ADDR = VAULT_ADDR
 node() {
   timestamps {
@@ -8,7 +8,7 @@ node() {
         [
             $class: 'VaultTokenCredentialBinding',
             credentialsId: 'jenkins_node_approle',
-            vaultAddr: 'http://35.175.113.232:8200'
+            vaultAddr: 'http://3.236.217.65:8200/'
         ]
     ])
    
